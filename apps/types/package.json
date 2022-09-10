@@ -1,0 +1,16 @@
+{
+  "name": "types",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {},
+  "dependencies": {
+    "backend": "*",
+    "mongodb": "^4.9.0",
+    "zod": "^3.18.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.4"
+  },
+  "license": "MIT"
+}

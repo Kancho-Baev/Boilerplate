@@ -2,7 +2,7 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
 import type { Todo, TodoWithId, ErrorResponse } from 'types';
 
 const client = axios.create({
-  baseURL: 'http://localhost:5000/api/v1/todos',
+  baseURL: 'http://localhost:5000/api/v1/todos'
 });
 
 export type APIError = AxiosError<ErrorResponse>;

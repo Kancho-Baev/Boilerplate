@@ -6,7 +6,7 @@ import Alert from '@mui/material/Alert';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 
 import { TodoWithId, Todo } from 'types';
-import { APIError, createOne } from '@/api/todos';
+import { APIError, createOne } from '../../api/todos';
 
 export default function TodoForm() {
   const queryClient = useQueryClient();
@@ -15,10 +15,10 @@ export default function TodoForm() {
     TodoWithId,
     APIError,
     Todo
-  >((todoToCreate) => createOne(todoToCreate), {
+  >(todoToCreate => createOne(todoToCreate), {
     onSuccess() {
       queryClient.invalidateQueries(['findAll']);
-    },
+    }
   });
 
   const formSubmitted = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -26,7 +26,7 @@ export default function TodoForm() {
     if (!newTodo.trim()) return;
     await mutateAsync({
       content: newTodo,
-      done: false,
+      done: false
     });
     setNewTodo('');
   };
@@ -42,7 +42,7 @@ export default function TodoForm() {
         <TextField
           fullWidth
           value={newTodo}
-          onChange={(e) => setNewTodo(e.currentTarget.value)}
+          onChange={e => setNewTodo(e.currentTarget.value)}
           id="newTodo"
           name="newTodo"
           label="New Todo"

@@ -9,10 +9,10 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import Home from '@/pages/Home';
-import Todo from '@/pages/Todo';
-import NotFound from '@/pages/NotFound';
-import theme from '@/theme';
+import Home from './pages/Home';
+import Todo from './pages/Todo';
+import NotFound from './pages/NotFound';
+import theme from './theme';
 
 export function App() {
   return (

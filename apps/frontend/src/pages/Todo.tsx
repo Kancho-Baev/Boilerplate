@@ -1,3 +1,4 @@
+import { TodoWithId } from 'types';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import HomeIcon from '@mui/icons-material/Home';
 import MUILink from '@mui/material/Link';
@@ -8,9 +9,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import LoadingButton from '@mui/lab/LoadingButton';
 
-import { findOne, deleteOne, updateOne, APIError } from '@/api/todos';
-import { TodoWithId } from 'types';
-import TodoItem from '@/components/todos/TodoItem';
+import { findOne, deleteOne, updateOne, APIError } from '../api/todos';
+import TodoItem from '../components/todos/TodoItem';
 
 interface TodoPageProps extends Record<string, string | undefined> {
   id?: string;
@@ -29,13 +29,13 @@ export default function TodoPage() {
     (todoWithId: TodoWithId) =>
       updateOne(todoWithId._id.toString(), {
         content: todoWithId.content,
-        done: !todoWithId.done,
+        done: !todoWithId.done
       }),
     {
       onSuccess() {
         queryClient.invalidateQueries(['findOne', params.id]);
         queryClient.invalidateQueries(['findAll']);
-      },
+      }
     }
   );
 
@@ -43,7 +43,7 @@ export default function TodoPage() {
     onSuccess() {
       queryClient.invalidateQueries(['findAll']);
       navigate('/');
-    },
+    }
   });
 
   return (
